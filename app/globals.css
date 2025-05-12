@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 20% 99%;
+    --foreground: 180 10% 10%;
+
+    --card: 180 20% 99%;
+    --card-foreground: 180 10% 10%;
+
+    --popover: 180 20% 99%;
+    --popover-foreground: 180 10% 10%;
+
+    --primary: 174 91% 22%;
+    --primary-foreground: 180 20% 99%;
+
+    --secondary: 172 66% 40%;
+    --secondary-foreground: 180 20% 99%;
+
+    --muted: 180 10% 96%;
+    --muted-foreground: 180 5% 40%;
+
+    --accent: 173 84% 32%;
+    --accent-foreground: 180 20% 99%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 20% 99%;
+
+    --border: 180 10% 90%;
+    --input: 180 10% 90%;
+    --ring: 174 91% 22%;
+
+    --radius: 0.5rem;
+
+    /* Chart colors */
+    --chart-1: 174 91% 22%;
+    --chart-2: 172 66% 40%;
+    --chart-3: 173 84% 32%;
+    --chart-4: 175 84% 32%;
+    --chart-5: 178 84% 32%;
+
+    /* Sidebar colors */
+    --sidebar-background: 180 20% 99%;
+    --sidebar-foreground: 180 10% 10%;
+    --sidebar-muted: 180 10% 96%;
+    --sidebar-muted-foreground: 180 5% 40%;
+    --sidebar-accent: 173 84% 32%;
+    --sidebar-accent-foreground: 180 20% 99%;
+    --sidebar-border: 180 10% 90%;
+    --sidebar-ring: 174 91% 22%;
+  }
+
+  .dark {
+    --background: 180 10% 10%;
+    --foreground: 180 20% 99%;
+
+    --card: 180 10% 12%;
+    --card-foreground: 180 20% 99%;
+
+    --popover: 180 10% 12%;
+    --popover-foreground: 180 20% 99%;
+
+    --primary: 174 91% 22%;
+    --primary-foreground: 180 20% 99%;
+
+    --secondary: 172 66% 40%;
+    --secondary-foreground: 180 20% 99%;
+
+    --muted: 180 10% 20%;
+    --muted-foreground: 180 5% 70%;
+
+    --accent: 173 84% 32%;
+    --accent-foreground: 180 20% 99%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 180 20% 99%;
+
+    --border: 180 10% 20%;
+    --input: 180 10% 20%;
+    --ring: 174 91% 22%;
+
+    /* Sidebar colors */
+    --sidebar-background: 180 10% 12%;
+    --sidebar-foreground: 180 20% 99%;
+    --sidebar-muted: 180 10% 20%;
+    --sidebar-muted-foreground: 180 5% 70%;
+    --sidebar-accent: 173 84% 32%;
+    --sidebar-accent-foreground: 180 20% 99%;
+    --sidebar-border: 180 10% 20%;
+    --sidebar-ring: 174 91% 22%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Accessibility improvements */
+@layer utilities {
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+
+  .break-words {
+    word-break: break-word;
+  }
+}
+
+/* Custom styles for the platform */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-card {
+  @apply bg-card rounded-lg shadow-sm border p-6 transition-all duration-200;
+}
+
+.dashboard-card:hover {
+  @apply shadow-md;
+}
+
+.stat-card {
+  @apply flex flex-col p-6 bg-card rounded-lg shadow-sm border;
+}
+
+.stat-value {
+  @apply text-3xl font-bold mt-2;
+}
+
+.stat-label {
+  @apply text-sm text-muted-foreground;
+}
+
+.form-container {
+  @apply max-w-2xl mx-auto p-6 bg-card rounded-lg shadow-sm border;
+}
+
+.section-title {
+  @apply text-2xl font-bold mb-6 text-foreground;
+}
+
+.subsection-title {
+  @apply text-xl font-semibold mb-4 text-foreground;
+}
+
+/* Responsive improvements */
+.responsive-padding {
+  @apply p-4 sm:p-6 md:p-8;
+}
+
+.responsive-gap {
+  @apply gap-4 sm:gap-6 md:gap-8;
+}
+
+.responsive-text {
+  @apply text-sm sm:text-base;
+}
+
+.responsive-heading {
+  @apply text-xl sm:text-2xl md:text-3xl font-bold;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    @apply p-4;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
